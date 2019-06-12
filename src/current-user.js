@@ -643,8 +643,7 @@ export class CurrentUser {
         serviceWorkerURL: config.serviceWorkerURL || DEFAULT_SERVICE_WORKER_URL,
       })
         .then(beamsClient => {
-          beamsClient.start()
-          return beamsClient
+          return beamsClient.start().then(() => beamsClient)
         })
         .then(beamsClient => {
           const fetchBeamsToken = userId =>
